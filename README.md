@@ -62,8 +62,19 @@ cp .env.example .env
 | `DATABASE_URL` | PostgreSQL connection string | Docker default: `postgresql://crypto_user:crypto_pass_dev@localhost:5432/crypto_intel` |
 | `GITHUB_TOKEN` | GitHub Personal Access Token | [github.com/settings/tokens](https://github.com/settings/tokens) (scopes: `repo`, `read:org`) |
 | `OPENAI_API_KEY` | OpenAI API Key | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) |
+| `GITHUB_UPDATE_INTERVAL_MINUTES` | Minutes between GitHub updates (default: 360 = 6 hours) | Optional |
+| `TWITTER_UPDATE_INTERVAL_MINUTES` | Minutes between Twitter updates (default: 30) | Optional |
+| `ONCHAIN_UPDATE_INTERVAL_MINUTES` | Minutes between on-chain updates (default: 15) | Optional |
+| `CHECK_INTERVAL_SECONDS` | Seconds between schedule checks (default: 60) | Optional |
 
-### Multi-Project Pipeline (RECOMENDADO)
+### Multi-Project Pipeline
+
+**🔄 Modo Continuo (RECOMENDADO para Producción):**
+
+El sistema ejecuta actualizaciones automáticas con diferentes frecuencias según la fuente de datos:
+- **GitHub**: cada 6 horas (respeta rate limits)
+- **Twitter**: cada 30 minutos (cuando se implemente)
+- **On-chain**: cada 15 minutos (cuando se implemente)
 
 ```bash
 # 1. Configurar environment
@@ -73,7 +84,17 @@ cp .env.example .env
 # 2. Insertar 10 proyectos en BD
 python setup_all_projects.py
 
-# 3. Ejecutar pipeline para todos
+# 3. Ejecutar pipeline en modo continuo
+python run_all_projects.py --continuous
+
+# Personalizar frecuencias en .env:
+# GITHUB_UPDATE_INTERVAL_MINUTES=180  # 3 horas en vez de 6
+```
+
+**⚡ Modo Una Vez (para desarrollo/testing):**
+
+```bash
+# Ejecutar pipeline para todos los proyectos (una sola vez)
 python run_all_projects.py --days 7
 
 # 4. Ejecutar solo algunos proyectos

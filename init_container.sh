@@ -23,5 +23,5 @@ python setup_all_projects.py
 
 # Run the main pipeline
 echo ""
-echo "Starting pipeline..."
-exec python -u run_all_projects.py "$@"
+echo "Starting pipeline in continuous mode..."
+exec python -u run_all_projects.py --continuous "$@"
