@@ -1,0 +1,291 @@
+# Crypto Intelligence Platform - Projects Configuration
+# Este archivo define todos los proyectos a analizar
+
+projects:
+  # ========================================
+  # Layer 1
+  # ========================================
+  
+  - project_id: ethereum
+    name: Ethereum
+    category: layer1
+    description: Leading smart contract blockchain platform
+    
+    token:
+      symbol: ETH
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: ethereum
+          repo: go-ethereum
+        - owner: ethereum
+          repo: consensus-specs
+    
+    social:
+      twitter:
+        - handle: ethereum
+      reddit:
+        - subreddit: ethereum
+    
+    onchain:
+      networks:
+        - ethereum
+  
+  # ----------------------------------------
+  
+  - project_id: solana
+    name: Solana
+    category: layer1
+    description: High-performance blockchain supporting builders around the world
+    
+    token:
+      symbol: SOL
+      network: solana
+    
+    github:
+      repositories:
+        - owner: solana-labs
+          repo: solana
+    
+    social:
+      twitter:
+        - handle: solana
+        - handle: SolanaLabs
+      reddit:
+        - subreddit: solana
+    
+    onchain:
+      networks:
+        - solana
+
+  # ========================================
+  # Layer 2
+  # ========================================
+  
+  - project_id: arbitrum
+    name: Arbitrum
+    category: layer2
+    description: Ethereum Layer 2 optimistic rollup
+    
+    token:
+      symbol: ARB
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: OffchainLabs
+          repo: arbitrum
+        - owner: OffchainLabs
+          repo: nitro
+    
+    social:
+      twitter:
+        - handle: arbitrum
+        - handle: OffchainLabs
+      reddit:
+        - subreddit: arbitrum
+    
+    onchain:
+      networks:
+        - ethereum
+        - arbitrum
+  
+  # ----------------------------------------
+  
+  - project_id: optimism
+    name: Optimism
+    category: layer2
+    description: Ethereum Layer 2 optimistic rollup with EVM compatibility
+    
+    token:
+      symbol: OP
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: ethereum-optimism
+          repo: optimism
+    
+    social:
+      twitter:
+        - handle: Optimism
+      reddit:
+        - subreddit: optimismnetwork
+    
+    onchain:
+      networks:
+        - ethereum
+        - optimism
+
+  # ========================================
+  # DeFi
+  # ========================================
+  
+  - project_id: uniswap
+    name: Uniswap
+    category: defi
+    description: Leading decentralized exchange protocol
+    
+    token:
+      symbol: UNI
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: Uniswap
+          repo: v3-core
+        - owner: Uniswap
+          repo: interface
+    
+    social:
+      twitter:
+        - handle: Uniswap
+      reddit:
+        - subreddit: Uniswap
+    
+    onchain:
+      networks:
+        - ethereum
+        - polygon
+        - arbitrum
+        - optimism
+  
+  # ----------------------------------------
+  
+  - project_id: aave
+    name: Aave
+    category: defi
+    description: Decentralized lending and borrowing protocol
+    
+    token:
+      symbol: AAVE
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: aave
+          repo: aave-v3-core
+    
+    social:
+      twitter:
+        - handle: AaveAave
+      reddit:
+        - subreddit: Aave_Official
+    
+    onchain:
+      networks:
+        - ethereum
+        - polygon
+        - avalanche
+
+  # ========================================
+  # Middleware / Infrastructure
+  # ========================================
+  
+  - project_id: chainlink
+    name: Chainlink
+    category: infrastructure
+    description: Decentralized oracle network
+    
+    token:
+      symbol: LINK
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: smartcontractkit
+          repo: chainlink
+    
+    social:
+      twitter:
+        - handle: chainlink
+      reddit:
+        - subreddit: Chainlink
+    
+    onchain:
+      networks:
+        - ethereum
+        - polygon
+        - avalanche
+        - arbitrum
+  
+  # ----------------------------------------
+  
+  - project_id: thegraph
+    name: The Graph
+    category: infrastructure
+    description: Decentralized protocol for indexing and querying blockchain data
+    
+    token:
+      symbol: GRT
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: graphprotocol
+          repo: graph-node
+    
+    social:
+      twitter:
+        - handle: graphprotocol
+      reddit:
+        - subreddit: thegraph
+    
+    onchain:
+      networks:
+        - ethereum
+
+  # ========================================
+  # Emerging / Strategic
+  # ========================================
+  
+  - project_id: eigenlayer
+    name: EigenLayer
+    category: restaking
+    description: Restaking protocol for extending Ethereum security
+    
+    token:
+      symbol: EIGEN
+      network: ethereum
+    
+    github:
+      repositories:
+        - owner: Layr-Labs
+          repo: eigenlayer-contracts
+    
+    social:
+      twitter:
+        - handle: eigenlayer
+      reddit:
+        - subreddit: eigenlayer
+    
+    onchain:
+      networks:
+        - ethereum
+  
+  # ----------------------------------------
+  
+  - project_id: celestia
+    name: Celestia
+    category: infrastructure
+    description: Modular blockchain network for scalable data availability
+    
+    token:
+      symbol: TIA
+      network: celestia
+    
+    github:
+      repositories:
+        - owner: celestiaorg
+          repo: celestia-node
+    
+    social:
+      twitter:
+        - handle: CelestiaOrg
+      reddit:
+        - subreddit: celestia
+    
+    onchain:
+      networks:
+        - celestia

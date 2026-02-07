@@ -1,0 +1,53 @@
+# Docker Compose for LOCAL DEVELOPMENT
+# For production deployment, see: ../Crypto-Intelligence-Platform-Support/
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database (basic setup for development)
+  postgres:
+    image: postgres:14-alpine
+    container_name: cip-postgres-dev
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-crypto_intel}
+      POSTGRES_USER: ${POSTGRES_USER:-cip_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cip_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/create_tables.sql:/docker-entrypoint-initdb.d/01_create_tables.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cip_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - cip-network
+
+  # CIP Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cip-app-dev
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-cip_user}:${POSTGRES_PASSWORD:-cip_password}@postgres:5432/${POSTGRES_DB:-crypto_intel}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - .:/app:ro  # Mount source for development
+      - ./logs:/app/logs
+    networks:
+      - cip-network
+    command: python run_pipeline.py --project-id arbitrum --days 7
+    # For interactive mode, use: command: tail -f /dev/null
+
+volumes:
+  postgres_data:
+
+networks:
+  cip-network:

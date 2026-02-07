@@ -1,0 +1,29 @@
+project_id: arbitrum
+name: Arbitrum
+category: layer2
+description: Ethereum Layer 2 optimistic rollup
+
+token:
+  symbol: ARB
+  network: ethereum
+
+github:
+  repositories:
+    - owner: OffchainLabs
+      repo: arbitrum
+    - owner: OffchainLabs
+      repo: nitro
+
+social:
+  twitter:
+    - handle: arbitrum
+    - handle: OffchainLabs
+  reddit:
+    - subreddit: arbitrum
+
+onchain:
+  networks:
+    - ethereum
+  contracts:
+    - name: ArbitrumBridge
+      address: "0x..."

@@ -1,0 +1,11 @@
+github:
+  token: "" # prefer using env var GITHUB_TOKEN instead of in-file token
+
+database:
+  # Example using a postgres connection URL
+  # export DATABASE_URL=postgresql://user:pass@localhost:5432/cip
+  url: ""
+
+project:
+  # Path to a project YAML following docs/project-schema.md
+  project_yaml: project.yaml
